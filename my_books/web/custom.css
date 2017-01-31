@@ -1,0 +1,36 @@
+
+.nav-tabs {
+        border-bottom: 0px solid #ddd !important;
+}
+
+.search_field .cancel {
+    position: absolute;
+    right: 5px;
+    top: 0;
+    bottom: 0;
+    height: 14px;
+    margin: auto;
+    font-size: 14px;
+    cursor: pointer;
+    color: #ccc;
+}
+
+.search_field .list {
+    position: absolute;
+    right: -20px;
+    top: 0;
+    bottom: 0;
+    height: 14px;
+    margin: auto;
+    font-size: 14px;
+    cursor: pointer;
+    color: #ccc;
+}
+
+span.clear {
+    cursor: pointer;
+}
+
+.panel-heading .btn {
+	padding: 1px 6px;
+}

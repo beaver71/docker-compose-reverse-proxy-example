@@ -1,8 +1,17 @@
 version: '2'
 services:
   app:
-    image: nginx:1.9
-    volumes:
-      - .:/usr/share/nginx/html/
+    build: ./
+    container_name: m1_service
+    # image: nginx:1.9
+    # volumes:
+    #   - ".:/usr/share/nginx/html/"
+    # on win not working
     expose:
       - "80"
+    networks:
+      - front
+      # real name will be <project_name>_front --> microservice1_front
+
+networks:
+  front:

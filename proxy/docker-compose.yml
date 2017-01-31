@@ -2,17 +2,24 @@ version: '2'
 services:
   proxy:
     build: ./
+    container_name: proxy
     networks:
-      - microservice1
-      - microservice2
+      - m1_service_front
+      - m2_service_front
+      - my_books_service_front
     ports:
-      - 80:80
-      - 443:443
+      - "80:80"
+      - "443:443"
+      - "8080:8080"
 
 networks:
-  microservice1:
+  m1_service_front:
     external:
-      name: microservice1_default
-  microservice2:
+      name: microservice1_front
+  m2_service_front:
     external:
-      name: microservice2_default
+      name: microservice2_front
+  my_books_service_front:
+    external:
+      name: mybooks_front
+

@@ -1,8 +1,15 @@
 version: '2'
 services:
   app:
-    image: nginx:1.9
-    volumes:
-      - .:/usr/share/nginx/html/
+    build: ./
+    container_name: m2_service
+    # image: nginx:1.9
+    # volumes:
+    #   - .:/usr/share/nginx/html/
     expose:
       - "80"
+    networks:
+      - front
+
+networks:
+  front:

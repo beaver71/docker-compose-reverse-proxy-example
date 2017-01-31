@@ -16,9 +16,8 @@ server {
         proxy_pass http://m1_service;
     }
 
-    access_log /dev/stdout;
-	error_log  /dev/stdout error;
-    # error_log  /var/log/nginx/error.log error;
+    access_log off;
+    error_log  /var/log/nginx/error.log error;
 }
 
 # microservice2 proxy config.
@@ -37,14 +36,14 @@ server {
         proxy_pass http://m2_service;
     }
 
-    access_log /dev/stdout;
-	error_log  /dev/stdout error;
-    # error_log  /var/log/nginx/error.log error;
+    access_log off;
+    error_log  /var/log/nginx/error.log error;
 }
 
 # my_books_service proxy config. --> port based
 server {
     listen 8080;
+    # server_name microservice2.test;
 
     location / {
         include /etc/nginx/includes/proxy.conf;
@@ -55,6 +54,18 @@ server {
     error_log  /var/log/nginx/error.log error;
 }
 
+server {
+    listen 80;
+	
+	# m2_service proxy config. --> path based routing
+	location /m2_service/ {
+        include /etc/nginx/includes/proxy.conf;
+        proxy_pass http://m2_service;
+    }
+
+    access_log /dev/stdout;
+    error_log  /var/log/nginx/error.log error;
+}
 
 # Catch all
 server {
@@ -64,24 +75,6 @@ server {
     root /var/www/html;
 
     charset UTF-8;
-	
-	# m1_service proxy config. --> path based routing
-	location /m1_service/ {
-        include /etc/nginx/includes/proxy.conf;
-        proxy_pass http://m1_service/;
-    }
-	
-	# m2_service proxy config. --> path based routing
-	location /m2_service/ {
-        include /etc/nginx/includes/proxy.conf;
-        proxy_pass http://m2_service/;
-    }
-	
-	# my_books_service proxy config. --> path based routing
-	location /my_books_service/ {
-        include /etc/nginx/includes/proxy.conf;
-        proxy_pass http://my_books_service:8080/;
-    }
 
     error_page 404 /backend-not-found.html;
     location = /backend-not-found.html {

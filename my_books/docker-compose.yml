@@ -1,0 +1,14 @@
+version: "2"
+
+services:
+  my_books_service:
+    build: ./
+    image: mybooks_app
+    container_name: my_books_service
+    expose:
+      - "8080"
+    networks:
+      - front
+
+networks:
+  front:

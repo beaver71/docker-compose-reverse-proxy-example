@@ -1,0 +1,25 @@
+{
+  "name": "book-server",
+  "version": "0.0.2",
+  "description": "book server",
+  "main": "server.js",
+  "author": "beaver@gadan",
+  "license": "UNLICENSED",
+  "engines": {
+    "node": "4.5.0"
+  },
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "csvtojson": "^1.1.2",
+    "express": "^4.13.3",
+    "express-static-gzip": "^0.2.2",
+    "fs": "0.0.1-security",
+    "http": "0.0.0",
+    "https": "^1.0.0"
+  },
+  "devDependencies": {
+    "del": "^2.1.0",
+    "gulp": "^3.9.0",
+    "run-sequence": "^1.1.4"
+  }
+}
